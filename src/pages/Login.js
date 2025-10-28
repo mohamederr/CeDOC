@@ -1,70 +1,10 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import inptLogo from '../assets/logos/inpt-logo.png';
-import api from '../services/api';
-
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    try {
-      // Appel à l'API de connexion de votre backend Spring Boot
-      const response = await api.post('/api/v1/auth/authenticate', {
-        email: email,
-        password: password
-      });
-
-      // Si la connexion réussit
-      const userData = response.data;
-      
-      // Stockez le token dans le localStorage
-      localStorage.setItem('token', userData.token);
-      localStorage.setItem('user', JSON.stringify(userData));
-      
-      // Redirigez en fonction du rôle
-      switch(userData.role) {
-        case 'CANDIDAT':
-          navigate('/suivi-candidature');
-          break;
-        case 'PROFESSEUR':
-          navigate('/espace-professeur');
-          break;
-        case 'CHEF_EQUIPE':
-          navigate('/espace-chef-equipe');
-          break;
-        case 'DIRECTEUR_CEDOC':
-          navigate('/espace-directeur-cedoc');
-          break;
-        case 'DOCTORANT':
-          navigate('/espace-doctorant');
-          break;
-        default:
-          navigate('/');
-      }
-    } catch (error) {
-      // Gestion des erreurs
-      if (error.response && error.response.status === 401) {
-        setError('Email ou mot de passe incorrect');
-      } else if (error.response && error.response.data && error.response.data.message) {
-        setError(error.response.data.message);
-      } else {
-        setError('Une erreur s\'est produite. Veuillez réessayer.');
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+  
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header avec logo et retour */}
@@ -84,26 +24,17 @@ function Login() {
       {/* Formulaire de connexion */}
       <div className="flex-grow flex items-center justify-center p-4">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-          <h1 className="text-2xl font-bold text-center mb-2">Connexion à la plateforme</h1>
+          <h1 className="text-2xl font-bold text-center mb-2">Connexion à l'espace candidat</h1>
           <p className="text-gray-600 text-center mb-8">Accédez à votre espace personnel</p>
 
-          {error && (
-            <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
-              {error}
-            </div>
-          )}
-
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-6">
             <div className="space-y-2">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
               <input
                 type="email"
                 id="email"
-                placeholder="votre.email@inpt.ac.ma"
+                placeholder="votre.email@exemple.com"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
               />
             </div>
 
@@ -115,9 +46,6 @@ function Login() {
                   id="password"
                   placeholder="Votre mot de passe"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
                 />
                 <button
                   type="button"
@@ -131,21 +59,9 @@ function Login() {
 
             <button
               type="submit"
-              disabled={isLoading}
-              className={`w-full py-2 px-4 rounded-md transition-colors ${
-                isLoading 
-                  ? 'bg-gray-400 cursor-not-allowed' 
-                  : 'bg-blue-600 text-white hover:bg-blue-700'
-              }`}
+              className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition-colors"
             >
-              {isLoading ? (
-                <span className="flex items-center justify-center">
-                  <span className="material-icons animate-spin mr-2">autorenew</span>
-                  Connexion en cours...
-                </span>
-              ) : (
-                'Se connecter'
-              )}
+              Se connecter
             </button>
           </form>
 
@@ -162,10 +78,9 @@ function Login() {
                 <span className="px-2 bg-white text-gray-500">ou</span>
               </div>
             </div>
-            
             <div className="mt-6">
               <Link to="/register" className="text-blue-600 hover:text-blue-800">
-                Créer un compte candidat
+                Créer un compte
               </Link>
             </div>
           </div>

@@ -85,22 +85,6 @@ function Candidature() {
                   <input type="date" className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Lieu de Naissance</label>
-                  <input type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Genre</label>
-                  <input type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Etat Civil</label>
-                  <input type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Statut Professionnel</label>
-                  <input type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" />
-                </div>
-                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Nationalité</label>
                   <input type="text" className="w-full p-2 border rounded focus:ring-2 focus:ring-blue-500" />
                 </div>

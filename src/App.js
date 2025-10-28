@@ -9,11 +9,6 @@ import SuiviCandidature from './pages/SuiviCandidature';
 import EquipesRecherche from './pages/EquipesRecherche';
 import Encadrants from './pages/Encadrants';
 import Doctorants from './pages/Doctorants';
-import EspaceDoctorant from './pages/EspaceDoctorant';
-import EspaceDirecteurCEDoc from './pages/EspaceDirecteurCEDoc';
-import EspaceChefEquipe from './pages/EspaceChefEquipe';
-import EspaceProfesseur from './pages/EspaceProfesseur';
-
 
 function App() {
   return (
@@ -30,14 +25,6 @@ function App() {
             <Route path="/equipes-recherche" element={<EquipesRecherche />} />
             <Route path="/encadrants" element={<Encadrants />} />
             <Route path="/doctorants" element={<Doctorants />} />
-             <Route path="/espace-directeur-cedoc" element={<EspaceDirecteurCEDoc />} />
-            <Route path="/espace-chef-equipe" element={<EspaceChefEquipe />} />
-            <Route path="/espace-professeur" element={<EspaceProfesseur />} />
-            
-            
-
-        
-            <Route path="/espace-doctorant" element={<EspaceDoctorant />} />
           </Routes>
         </main>
       </div>

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# CeDOC
-project de stage
-=======
 # INPT - Centre d'Études Doctorales
 
 Ce projet est une application React pour le Centre d'Études Doctorales de l'INPT.
@@ -29,4 +25,3 @@ Ce projet est une application React pour le Centre d'Études Doctorales de l'INP
 ## Personnalisation
 - Les couleurs et styles INPT sont définis dans `src/index.css`.
 - La page principale se trouve dans `src/components/HomePage.js`.
->>>>>>> 21d1c0bb (Initial commit: Application de gestion du CEDoc INPT)
